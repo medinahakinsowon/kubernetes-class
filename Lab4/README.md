@@ -1,5 +1,5 @@
 
-# Lab 3: Deploying a Web Application Using Helm
+# Lab 4: Deploying a Web Application Using Helm
 
 
 ## Setup

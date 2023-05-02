@@ -9,10 +9,10 @@ minikube start
 
 ## Install our application using Helm
 
-Let's do a fresh install of our applicaiton from lab 3.  Notice the `--create-namespace` flag? this creates a namespace for us if it doesnt exist..
+Let's do a fresh install of our applicaiton from lab 4.  Notice the `--create-namespace` flag? this creates a namespace for us if it doesnt exist..
 
 ```
-helm install myhelmapp-prod-lab4 myhelmapp/. --values myhelmapp/values.yaml --values myhelmapp/values-prod.yaml --namespace prod --create-namespace
+helm install myhelmapp-prod-lab5 myhelmapp/. --values myhelmapp/values.yaml --values myhelmapp/values-prod.yaml --namespace prod --create-namespace
 ```
 
 
