@@ -1,108 +1,51 @@
 
-# Lab 3: Deploying a Web Application Using Helm
+# Apply the configus in the folder. you can use the command below
 
-
-## Setup
-- Do a `minikube delete` and `minikube start` before attempting this lab. If you don't do this then you will run into issues that some of the resources already exist.
-- Manually create namespaces:
+1. Apply the namespace first
 ```
-kubectl create namespace dev
-kubectl create namespace prod
+kubectl apply -f ./Lab3/namespaces.yml
 ```
-
-
-## Create the Scaffolding of the Helm Chart
-Create the Scaffolding of a Helm Chart. In the real world - this step is optional. You could create a Helm Chart just by copying/pasting the files from another Helm Chart. Copy/Pasing another Helm Chart is what most people do.
+2. Now you should be able to apply all the resources
 
 ```
-helm create myhelmapp
+kubectl apply -f ./Lab3/
 ```
 
-## Inspect the folder struct and remove unnecessary files
+# Get access to your service through Minikube
 
-- A new folder named mywebapp should of been created
-- Look at the files it created. Specifically `Chart.yaml` and `values.yaml`
-- Now look at all the files in the myhelmapp/templates folder. These are just there for examples
-- Remove all the files in the myhelmapp/templates folder. We want to use our own manifest files
-
-
-## Move our manifest files into the templates folder
-
-- Take the manifests we have from Lab2 and move them into the templates folder that was created
-- remove the `namespaces.yml` file. 
-
-## Modify the templates to use Helm templating
-
-Look at the `deployment.yml`, `services.yml` and `configmap` files. What are some things we can customize?
-
-The answer - Anything we want. Customize the following:
-
-`{{ .Values.namespace }}` for the namespace
-`{{ .Values.appName }}` for all the app: labels
-`{{ .Values.image.name }}` for the image name
-`{{ .Values.image.tag }}` for the image tag
-`{{ .Values.configmap.name }}` for the config map name
-
-Note: you will probably want to check the solutions folder, there are a lot of changes to make.
-
-## Modify the values.yaml file
-
-- The helm create command would of created a values.yaml file. Inpsect it.
-- Again, this is just an example. We can customize anything we want. Remove the contents of the file and replace it with the following:
+In a new terminal window, run this command and leave it running.  It will provides you with a url to access your application.  You can use the url to test your application.
 
 ```
-appName: myhelmapp
-
-namespace: default
-
-configmap:
-  name: nginx-configv1
-
-image:
-  name: nginx
-  tag: latest
+minikube service -n dev --all
 ```
 
-## Deploy your chart using helm
+# Get the pods in the dev namespace and watch for changes
 
+Note: YOu can try adding the -w flag to watch for changes! Use Ctrl+C to exit
 ```
-helm install myhelmapp myhelmapp/. 
-```
-
-
-## Verify the deployment
-
-
-```
-helm ls
-kubectl get all
+kubectl get pods -n dev
 ```
 
-## Create a prod and dev version
+# Make changes to your Deployment 
 
-- copy/paste your values.yml file to create two more: values-dev.yml and values-prod.yml
-- change some of the values. namespace, image tag, configmap name, replicas
-- deploy your prod and dev versions
-
-```
-helm install myhelmapp-dev myhelmapp/. --values myhelmapp/values.yaml --values myhelmapp/values-dev.yaml
-helm install myhelmapp-prod myhelmapp/. --values myhelmapp/values.yaml --values myhelmapp/values-prod.yaml
-```
-
-
-## Verify the deployments
+1. Change it from configmapv1 to configmapv2 (line 40)
+2. Reapply your manifests
+3. Look at your pods and notice they should of been recreated
+4. Use the url provided.  You should see your application is now using configmapv2
 
 ```
-helm ls
-kubectl get all -n <namespace>
+kubectl apply -f ./Lab3/
+kubectl get pods -n dev
 ```
 
-## Troubleshooting
+# Roll back your Deployment to configmap1!
 
-Mess up a deployment? you may have to `helm uninstall`
-
-example:
+1. Change it from configmapv2 to configmapv1 (line 40)
+2. Reapply your manifests
+3. Look at your pods and notice they should of been recreated
+4. Use the url provided.  You should see your application is now using configmapv1
 
 ```
-helm uninstall myhelmapp-dev
+kubectl apply -f ./Lab3/
+kubectl get pods -n dev
 ```
