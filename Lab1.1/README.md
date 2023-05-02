@@ -1,4 +1,4 @@
-# Kubernetes-Lab2-Node-Cordon
+# Kubernetes-Lab1.1-Node-Cordon
 ## Create a Deployment
 
 We need a basic deployment so we have something to work with.
