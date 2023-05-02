@@ -22,8 +22,8 @@ https://kubernetes.io/docs/home/
 ### Kubernetes Documentary
 Want to watch a Kubernetes Documentary? Check out these videos:
 
-https://www.youtube.com/watch?v=BE77h7dmoQU
-https://www.youtube.com/watch?v=318elIq37PE
+- https://www.youtube.com/watch?v=BE77h7dmoQU
+- https://www.youtube.com/watch?v=318elIq37PE
 
 
 ### Google SRE Book on SRE
