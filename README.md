@@ -15,6 +15,17 @@ minikube start
 
 # Resources
 
+## Tools to install:
+
+#### Must have these:
+Minikube (simulates Kubernetes in a docker container)https://minikube.sigs.k8s.io/docs/start/
+Kubectl (Used for sending commands to kubernetes clusters): https://kubernetes.io/docs/tasks/tools/
+
+#### Optional extras (I will show these off but you don't need them):
+kubectx/kubens - for managing contexts to multiple clusters https://github.com/ahmetb/kubectx
+A powerful CLI tool for managing kubernetes https://k9scli.io/
+OpenLens - A GUI tool https://github.com/MuhammedKalkan/OpenLens
+
 ### Official Documentation
 https://kubernetes.io/docs/home/
 
