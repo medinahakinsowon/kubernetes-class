@@ -2,7 +2,7 @@
 
 1. Clone the repo
 ```
-git clone https://github.com/IBT-learning/kubernetes-python-flask
+git clone https://github.com/devopswithbrad/kubernetes-class.git
 ```
 
 # Start with a Fresh Minikube cluster
