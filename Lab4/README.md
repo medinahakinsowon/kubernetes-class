@@ -28,7 +28,7 @@ helm create myhelmapp
 
 ## Move our manifest files into the templates folder
 
-- Take the manifests we have from Lab2 and move them into the templates folder that was created
+- Take the manifests we have from Lab3 and move them into the templates folder that was created
 - remove the `namespaces.yml` file. 
 
 ## Modify the templates to use Helm templating
