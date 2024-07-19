@@ -84,7 +84,7 @@ Want more information about any of the items? use the `kubectl describe` command
 ```
 kubectl describe <resource name>
 ```
-examples `kubectl describe pods/hello-world-68bfd59bd9-8cjlg`
+examples `kubectl describe pods hello-world-68bfd59bd9-8cjlg`
 
 ## See all resources on Kubernetes
 
