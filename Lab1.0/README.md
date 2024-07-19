@@ -77,7 +77,10 @@ kubectl get all
 kubectl get pods
 kubectl get deployments
 kubectl get replicaset
+
 ```
+#see the pods attached to a particular namespace
+kubectl get pods -n [name of namespace]
 
 Want more information about any of the items? use the `kubectl describe` command. Use the resoruce name given in the previous commands.
 
